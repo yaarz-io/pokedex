@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pokedex: #dc2626;
+  --color-pokedex-dark: #991b1b;
+  --color-pokedex-darker: #7f1d1d;
+  --color-pokedex-light: #ef4444;
+  --color-lens: #38bdf8;
+  --color-lens-inner: #7dd3fc;
+  --color-screen: #d1fae5;
+  --color-screen-border: #064e3b;
+}
