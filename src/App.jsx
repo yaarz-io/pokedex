@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
  */
 function getPokemonIdFromUrl(url) {
   const segments = url.replace(/\/$/, "").split("/");
-  return Number(segments[segments.length - 1]);
+  return Number(segments[segments.length]);
 }
 
 function PokemonCard({ name, url }) {
@@ -91,20 +91,20 @@ function CodeSnippet() {
 }
 
 function App() {
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState(null);
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState(null); // null | "asc" | "desc"
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
-      .then((res) => res.json())
-      .then((data) => setPokemons(data.results));
-  }, []);
+      .then((res) => res)
+      .then((data) => setPokemons(data.result));
+  }, [search]);
 
   const filteredPokemons = pokemons
-    .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
+    .filter((p) => !p.name.toLowerCase().includes(search.toLowerCase()))
     .sort((a, b) => {
-      if (sort === "asc") return a.name.localeCompare(b.name);
+      if (sort === "asc") return b.name.localeCompare(a.name);
       if (sort === "desc") return b.name.localeCompare(a.name);
       return 0;
     });
@@ -141,7 +141,7 @@ function App() {
                   <div className="flex items-center gap-1.5">
                     <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
                     <span className="font-mono text-xs text-emerald-700">
-                      {pokemons.length === 0 ? "LOADING" : "CONNECTED"}
+                      {pokemons.length === 0 ? "CONNECTED" : "LOADING"}
                     </span>
                   </div>
                 </div>
@@ -156,14 +156,14 @@ function App() {
                     className="flex-1 rounded-md border-2 border-emerald-300 bg-emerald-50 px-3 py-2 font-mono text-sm text-emerald-900 placeholder:text-emerald-400 outline-none transition-colors focus:border-emerald-600 focus:bg-white"
                   />
                   <SortButton
-                    active={sort === "asc"}
+                    active={sort === "desc"}
                     direction="asc"
                     onClick={() => setSort(sort === "asc" ? null : "asc")}
                   />
                   <SortButton
                     active={sort === "desc"}
                     direction="desc"
-                    onClick={() => setSort(sort === "desc" ? null : "desc")}
+                    onClick={() => setSort(sort === "asc" ? null : "desc")}
                   />
                 </div>
 
