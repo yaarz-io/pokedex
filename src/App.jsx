@@ -206,23 +206,28 @@ function App() {
         {/* Instructions box — side by side on large screens */}
         <div className="w-full rounded-xl border border-slate-600 bg-slate-900 p-5 text-left shadow-lg lg:w-[420px] lg:shrink-0 lg:self-stretch">
           <h2 className="mb-3 font-mono text-sm font-bold uppercase tracking-wider text-slate-300">
-            Instructions
+            Exercise
           </h2>
+          <p className="mb-4 font-mono text-xs leading-relaxed text-slate-400">
+            This Pokédex app has{" "}
+            <span className="font-bold text-white">10 bugs</span> in{" "}
+            <span className="rounded bg-slate-800 px-1 text-slate-300">
+              src/App.jsx
+            </span>
+            . Find and fix all of them.
+          </p>
+          <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-wider text-slate-500">
+            The app should:
+          </p>
           <ul className="space-y-3 font-mono text-xs leading-relaxed text-slate-400">
             <li>
-              <span className="text-emerald-400">&#10003;</span>{" "}
-              <span className="text-slate-300">Initiate the React app</span>
-              <div className="mt-1 break-all rounded border border-slate-700 bg-slate-800 px-2 py-1.5 text-[11px] text-slate-300">
-                <span className="select-all">
-                  npm create vite@latest -- pokedex -t react -i --no-rolldown
-                  --no-interactive
-                </span>
-              </div>
+              <span className="text-slate-600">▸</span>{" "}
+              <span>Render without crashing</span>
             </li>
             <li>
-              <span className="text-emerald-400">&#10003;</span>{" "}
-              <span className="text-slate-300">
-                Fetch pokemon list from the API
+              <span className="text-slate-600">▸</span>{" "}
+              <span>
+                Fetch and display all 151 Gen 1 Pokémon from the API
               </span>
               <div className="mt-1">
                 <a
@@ -235,38 +240,22 @@ function App() {
               </div>
             </li>
             <li>
-              <span className="text-emerald-400">&#10003;</span>{" "}
-              <span className="text-slate-300">
-                Display pokemons as cards in a grid
+              <span className="text-slate-600">▸</span>{" "}
+              <span>Show each Pokémon's sprite in its card</span>
+            </li>
+            <li>
+              <span className="text-slate-600">▸</span>{" "}
+              <span>Filter cards to only matching names when searching</span>
+            </li>
+            <li>
+              <span className="text-slate-600">▸</span>{" "}
+              <span>
+                Sort A→Z and Z→A correctly, with the active button highlighted
               </span>
             </li>
             <li>
-              <span className="text-emerald-400">&#10003;</span>{" "}
-              <span className="text-slate-300">Filter pokemons by name</span>
-            </li>
-            <li>
-              <span className="text-emerald-400">&#10003;</span>{" "}
-              <span className="text-yellow-400 font-bold">(BONUS)</span>{" "}
-              <span className="text-slate-300">
-                Show pokemon image in the card
-              </span>
-              <div className="mt-1 break-all rounded border border-slate-700 bg-slate-800 px-2 py-1.5 text-[10px] text-slate-400">
-                https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/
-                <strong className="text-slate-200">[id]</strong>.png
-              </div>
-              <details className="mt-1 group">
-                <summary className="cursor-pointer text-slate-500 select-none hover:text-slate-300 transition-colors">
-                  Show helper function to extract the pokemon ID
-                </summary>
-                <CodeSnippet />
-              </details>
-            </li>
-            <li>
-              <span className="text-emerald-400">&#10003;</span>{" "}
-              <span className="text-yellow-400 font-bold">(BONUS)</span>{" "}
-              <span className="text-slate-300">
-                Sort pokemons ascending / descending
-              </span>
+              <span className="text-slate-600">▸</span>{" "}
+              <span>Display the correct connection status</span>
             </li>
           </ul>
         </div>
